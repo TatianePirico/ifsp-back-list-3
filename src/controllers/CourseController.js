@@ -23,7 +23,17 @@ module.exports = {
 		}
 		res.json(json);
 	},
+	getStudentById: async (req, res) => {
+		let json = { error:'', result: {} };
+		let id = req.params.id;
+		let student = await CourseService.getStudentById(id);
 
+		if(student) {
+			json.result = student;
+		}
+
+		res.json(json);
+	},
 	getAllCourses: async (req, res) => {
 		let json = { error:'', result: [] };
 		let courses = await CourseService.getAllCourses();
@@ -35,5 +45,43 @@ module.exports = {
 			});
 		}
 		res.json(json);
-	}
+	},
+	getCourseById: async (req, res) => {
+		let json = { error:'', result: {} };
+		let id = req.params.id;
+		let course = await CourseService.getCourseById(id);
+
+		if(course) {
+			json.result = course;
+		}
+
+		res.json(json);
+	},
+	getAllEnrollments: async (req, res) => {
+		let json = { error:'', result: [] };
+		let enrollments = await CourseService.getAllEnrollments();
+
+		for (let i in enrollments) {
+			json.result.push({
+				id: enrollments[i].id,
+				name: enrollments[i].name,
+				description: enrollments[i].description
+			});
+		}
+		res.json(json);
+	},
+	getEnrollmentByIdCourse: async (req, res) => {
+		let json = { error:'', result: [] };
+		let id = req.params.id;
+		let enrollments = await CourseService.getEnrollmentByIdCourse(id);
+
+		for (let i in enrollments) {
+			json.result.push({
+				id: enrollments[i].id,
+				name: enrollments[i].name,
+				description: enrollments[i].description
+			});
+		}
+		res.json(json);
+	},
 }
