@@ -89,6 +89,12 @@ module.exports = {
 
 		res.json(json);
 	},
+	deleteStudentById: async (req, res) => {
+		let json = { error:'', result: {} };
+		let id = req.params.id;
+		await CourseService.deleteStudentById(id);
+		res.json(json);
+	},
 	// COURSES
 	getAllCourses: async (req, res) => {
 		let json = { error:'', result: [] };
@@ -140,6 +146,12 @@ module.exports = {
 			json.error = "Campos não enviados";
 		}
 
+		res.json(json);
+	},
+	deleteCourseById: async (req, res) => {
+		let json = { error:'', result: {} };
+		let id = req.params.id;
+		await CourseService.deleteCourseById(id);
 		res.json(json);
 	},
 	// ENROLLMENTS
@@ -201,6 +213,12 @@ module.exports = {
 			json.error = "Campos não enviados";
 		}
 
+		res.json(json);
+	},
+	deleteEnrollmentById: async (req, res) => {
+		let json = { error:'', result: {} };
+		let id = req.params.id;
+		await CourseService.deleteEnrollmentById(id);
 		res.json(json);
 	},
 }

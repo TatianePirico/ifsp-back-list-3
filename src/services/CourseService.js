@@ -46,6 +46,14 @@ module.exports = {
 			});
 		});
 	},
+	deleteStudentById:  (id) => {
+		return new Promise((resolve, reject) => {
+			db.query('DELETE FROM students WHERE id = ?', [id], (error, results) => {
+				if(error) { reject(error); return; }
+				resolve(results);
+			});
+		});
+	},
 	// COURSES
 	getAllCourses:  () => {
 		return new Promise((resolve, reject) => {
@@ -78,6 +86,14 @@ module.exports = {
 	updateCourseById: (id, description) => {
 		return new Promise((resolve, reject) => {
 			db.query(`UPDATE courses SET description = ? WHERE id = ?`, [description, id], (error, results) => {
+				if(error) { reject(error); return; }
+				resolve(results);
+			});
+		});
+	},
+	deleteCourseById:  (id) => {
+		return new Promise((resolve, reject) => {
+			db.query('DELETE FROM courses WHERE id = ?', [id], (error, results) => {
 				if(error) { reject(error); return; }
 				resolve(results);
 			});
@@ -128,6 +144,14 @@ module.exports = {
 	updateEnrollmentById: ( id, student_id, course_id, enrollment_date) => {
 		return new Promise((resolve, reject) => {
 			db.query(`UPDATE school_enrollment SET student_id = ?, course_id = ?, enrollment_date = ?  WHERE id = ?`, [student_id, course_id, enrollment_date, id], (error, results) => {
+				if(error) { reject(error); return; }
+				resolve(results);
+			});
+		});
+	},
+	deleteEnrollmentById:  (id) => {
+		return new Promise((resolve, reject) => {
+			db.query('DELETE FROM school_enrollment WHERE id = ?', [id], (error, results) => {
 				if(error) { reject(error); return; }
 				resolve(results);
 			});
