@@ -1,0 +1,31 @@
+{
+  "name": "ifsp-back-list-3",
+  "version": "1.0.0",
+  "description": "CRUD\r 3 tabelas\r 5 registros",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./src/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TatianePirico/ifsp-back-list-3.git"
+  },
+  "keywords": [],
+  "author": "Tatiane Pirico Oyakawa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TatianePirico/ifsp-back-list-3/issues"
+  },
+  "homepage": "https://github.com/TatianePirico/ifsp-back-list-3#readme",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.18.3",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}
