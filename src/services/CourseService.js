@@ -21,6 +21,18 @@ module.exports = {
 			});
 		});
 	},
+	insertStudent: (name, birth_date, nationality, gender, publicPlace, number, city, state, zipCode, type) => {
+		return new Promise((resolve, reject) => {
+			db.query(`INSERT INTO students
+			(name, birth_date, nationality, gender, publicPlace, number, city, state, zipCode, type)
+			VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+			[name, birth_date, nationality, gender, publicPlace, number, city, state, zipCode, type],
+			(error, results) => {
+				if(error) { reject(error); return; }
+				resolve(results.insertStudent);
+			});
+		});
+	},
 	getAllCourses:  () => {
 		return new Promise((resolve, reject) => {
 			db.query('SELECT * FROM courses', (error, results) => {
@@ -38,6 +50,14 @@ module.exports = {
 				} else {
 					resolve(false);
 				}
+			});
+		});
+	},
+	insertCourse: (description) => {
+		return new Promise((resolve, reject) => {
+			db.query(`INSERT INTO courses (description) VALUES (?)`, [description], (error, results) => {
+				if(error) { reject(error); return; }
+				resolve(results.insertCourse);
 			});
 		});
 	},
@@ -71,6 +91,14 @@ module.exports = {
 				(error, results) => {
 					if(error) { reject(error); return; }
 					resolve(results);
+			});
+		});
+	},
+	insertEnrollment: (student_id, course_id, enrollment_date) => {
+		return new Promise((resolve, reject) => {
+			db.query(`INSERT INTO school_enrollment (student_id, course_id, enrollment_date) VALUES (?, ?, ?)`, [student_id, course_id, enrollment_date], (error, results) => {
+				if(error) { reject(error); return; }
+				resolve(results.insertEnrollment);
 			});
 		});
 	},
